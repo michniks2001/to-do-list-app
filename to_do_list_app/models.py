@@ -5,3 +5,6 @@ class Task(models.Model):
     task_name = models.CharField(max_length=255)
     completed = models.BooleanField(default=False)
     deadline = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.task_name}'
