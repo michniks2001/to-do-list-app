@@ -1,0 +1,49 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+}
+
+.main {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main li {
+    margin-right: 20px;
+}
+
+.main li:last-child {
+    margin-right: 0;
+}
+
+.main li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.user {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.user li {
+    margin-right: 10px;
+}
+
+.user li:last-child {
+    margin-right: 0;
+}
+
+.user li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
