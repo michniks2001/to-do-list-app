@@ -1,12 +1,10 @@
-import Navbar from './components/Navbar'
-import CreateTask from './components/CreateTask'
-import Calendar from './components/Calendar.jsx'
+import React from 'react';
+import LandingPage from './components/LandingPage.jsx';
 
 const App = () => {
   return (
     <div>
-      <CreateTask />
-      <Calendar />
+      <LandingPage />
     </div>
   )
 }

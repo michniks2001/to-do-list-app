@@ -29,10 +29,12 @@ class TaskAPITests(TestCase):
         self.task_data = {
             'task_name': 'Test Task',
             'completed': False,
+            'start_date': timezone.now() - timezone.timedelta(days=7),
             'deadline': timezone.now()
         }
         self.task = Task.objects.create(
             task_name=self.task_data['task_name'],
+            start_date=self.task_data['start_date'],
             completed=self.task_data['completed'],
             deadline=self.task_data['deadline']
         )

@@ -44,10 +44,23 @@ class DeleteTask(generics.DestroyAPIView):
     
 
 class MarkAsCompleted(generics.UpdateAPIView):
+    """Mark Task as Completed View
+
+    Args:
+        generics (UpdateAPIView): Inherits from this generic view to allow user to mark tasks as completed
+    """
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
     
     def update(self, request, *args, **kwargs):
+        """Update method to mark task as completed
+
+        Args:
+            request (Any): HTTP Request
+
+        Returns:
+            JSON Response: Returns a JSON response with the updated task information
+        """
         instance = self.get_object()
         instance.completed = True
         instance.save()

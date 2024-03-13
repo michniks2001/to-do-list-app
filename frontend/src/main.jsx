@@ -1,11 +1,15 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider} from "react-router-dom";
+
+import "./index.css";
+
 import App from "./App.jsx";
 import TaskView from "./components/TaskView.jsx";
-import SignUp from "./components/SignUp.jsx";
-import { createBrowserRouter, RouterProvider} from "react-router-dom";
-import "./index.css";
 import Navbar from "./components/Navbar.jsx";
+import Login from "./components/Login.jsx";
+import SignUp from "./components/SignUp.jsx";
+import Calendar from "./components/Calendar.jsx";
 
 const router = createBrowserRouter([
   {
@@ -13,12 +17,20 @@ const router = createBrowserRouter([
     element: [<Navbar />, <App />],
   },
   {
+    path: "/calendar",
+    element: [<Navbar />, <Calendar />],
+  },
+  {
     path: "/task-view",
-    element: [<Navbar />, <TaskView />]
+    element: [<Navbar />, <TaskView />],
   },
   {
     path: "/sign-up",
     element: [<Navbar />, <SignUp />]
+  },
+  {
+    path: "/login",
+    element: [<Navbar />, <Login />]
   }
 ]);
 

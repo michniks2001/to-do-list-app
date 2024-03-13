@@ -9,7 +9,7 @@ const Calendar = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await fetch("http://localhost:8000/tasks/list");
+        const response = await fetch("http://localhost:8000/tasks/list/");
         const data = await response.json();
         setTasks(data);
       } catch (error) {
