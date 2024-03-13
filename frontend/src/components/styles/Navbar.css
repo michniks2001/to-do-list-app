@@ -1,9 +1,14 @@
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #f8f9fa;
     padding: 10px 20px;
+    z-index: 1000; /* Ensure the navbar is above other content */
 }
 
 .main {
@@ -46,4 +51,9 @@
     text-decoration: none;
     color: black;
     font-weight: bold;
+}
+
+/* Add padding to the body to offset the fixed navbar */
+body {
+    padding-top: 50px; /* Adjust as needed */
 }

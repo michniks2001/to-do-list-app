@@ -1,33 +1,49 @@
-.calendar {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
-}
-
-.event {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #ccc;
+.task-calendar {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .task-calendar .fc {
+    font-family: Arial, sans-serif;
+  }
+  
+  .task-calendar .fc-header-toolbar {
+    margin-bottom: 20px;
+  }
+  
+  .task-calendar .fc-header-toolbar .fc-toolbar-chunk {
+    margin-right: 10px;
+  }
+  
+  .task-calendar .fc-header-toolbar .fc-center h2 {
+    font-size: 1.5em;
+    margin: 0;
+  }
+  
+  .task-calendar .fc-header-toolbar .fc-toolbar-chunk button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
     border-radius: 5px;
-    padding: 10px;
-    background-color: #f8f9fa;
-}
-
-.date {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.details {
-    flex: 1;
-}
-
-h3 {
-    margin: 0;
-    font-size: 1.1rem;
-}
-
-p {
-    margin: 0;
-    color: #333;
-}
+    cursor: pointer;
+  }
+  
+  .task-calendar .fc-header-toolbar .fc-toolbar-chunk button:hover {
+    background-color: #0056b3;
+  }
+  
+  .task-calendar .fc-daygrid-event {
+    background-color: lightblue;
+    border-color: blue;
+  }
+  
+  .task-calendar .fc-daygrid-event-harness {
+    padding: 2px;
+  }
+  
+  .task-calendar .fc-daygrid-event-harness .fc-daygrid-event {
+    margin: 1px;
+  }
+  

@@ -1,0 +1,73 @@
+import React, { useState } from 'react';
+import './styles/CreateTask.css'
+
+const CreateTask = () => {
+    const [taskName, setTaskName] = useState('');
+    const [startDate, setStartDate] = useState('');
+    const [deadline, setDeadline] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        fetch('http://localhost:8000/tasks/create/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                task_name: taskName,
+                start_date: startDate,
+                deadline: deadline,
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Assuming data contains the newly created task object
+            onCreate(data);
+            setTaskName('');
+            setStartDate('');
+            setDeadline('');
+            window.location.reload();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    };
+
+    return (
+        <div>
+            <h2>Create Task</h2>
+            <form onSubmit={handleSubmit}>
+                <label>Task:
+                    <input
+                        type="text"
+                        value={taskName}
+                        onChange={(e) => setTaskName(e.target.value)}
+                        required
+                    />
+                </label>
+                <label>
+                    Start Date:
+                    <input
+                        type="datetime-local"
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                        required
+                    />
+                </label>
+                <label>
+                    Deadline:
+                    <input
+                        type="datetime-local"
+                        value={deadline}
+                        onChange={(e) => setDeadline(e.target.value)}
+                        required
+                    />
+                </label>
+                <button type="submit">Create Task</button>
+            </form>
+        </div>
+    );
+};
+
+export default CreateTask;

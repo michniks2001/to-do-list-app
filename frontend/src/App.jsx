@@ -1,11 +1,11 @@
 import Navbar from './components/Navbar'
-import Calendar from './components/Calendar'
+import CreateTask from './components/CreateTask'
+import Calendar from './components/Calendar.jsx'
 
-function App() {
-
+const App = () => {
   return (
     <div>
-      <Navbar />
+      <CreateTask />
       <Calendar />
     </div>
   )
