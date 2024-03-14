@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'to_do_list_app',
     'users',
     'corsheaders',
+    'rest_framework_simplejwt',
 
 ]
 

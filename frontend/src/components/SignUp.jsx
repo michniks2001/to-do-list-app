@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './styles/SignUp.css';
+import './styles/Login.css';
 
 const SignUp = () => {
     const [email, setEmail] = useState("");
@@ -27,9 +27,12 @@ const SignUp = () => {
     };
 
     return (
-        <form className="sign-up-form" onSubmit={handleSubmit}>
+        <div className="form-container">
+        <form className="login-form" onSubmit={handleSubmit}>
+            <h2>Sign Up</h2>
             <label>Email:
             <input
+                className="text-enter"
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -37,6 +40,7 @@ const SignUp = () => {
             </label>
             <label>Password:
             <input
+                className="text-enter"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -44,6 +48,7 @@ const SignUp = () => {
             </label>
             <label>First Name:
             <input
+                className="text-enter"
                 type="text"
                 value={first_name}
                 onChange={(e) => setFirstName(e.target.value)}
@@ -51,13 +56,15 @@ const SignUp = () => {
             </label>
             <label>Last Name:
             <input
+                className="text-enter"
                 type="text"
                 value={last_name}
                 onChange={(e) => setLastName(e.target.value)}
                 />
             </label>
-            <button type="submit">Sign Up!</button>
+            <button className="submit-button" type="submit">Sign Up!</button>
         </form>
+        </div>
 
     );
 };

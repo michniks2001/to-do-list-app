@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Cookies from 'js-cookie';
 import './styles/Login.css';
 
 function Login() {
@@ -24,7 +25,9 @@ function Login() {
         });
 
         const data = await response.json();
-        console.log(`JWT: ${data.token}`);
+        localStorage.setItem('token', data.access);
+        Cookies.set('token', data.access, { expires: 7 });
+        console.log(`Token: ${data.access}`);
     };
 
     return (
@@ -33,13 +36,13 @@ function Login() {
             <form className='login-form' onSubmit={handleSubmit}>
                 <label>
                     Email:
-                    <input type="email" value={email} onChange={handleEmailChange} />
+                    <input className="text-enter" type="email" value={email} onChange={handleEmailChange} />
                 </label>
                 <label>
                     Password:
-                    <input type="password" value={password} onChange={handlePasswordChange} />
+                    <input className="text-enter" type="password" value={password} onChange={handlePasswordChange} />
                 </label>
-                <input type="submit" value="Submit" />
+                <input className="submit-button" type="submit" value="Submit" />
             </form>
         </div>
     );

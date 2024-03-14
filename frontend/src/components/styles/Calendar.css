@@ -1,8 +1,7 @@
 /* styles/Calendar.css */
 
 .FullCalendar {
-  width: 100%;
-  height: 100%;
+  max-width: 800px;
 }
 
 .FullCalendar .fc-daygrid-event {
@@ -14,7 +13,7 @@
 }
 
 .FullCalendar .fc-daygrid-event:hover {
-  background-color: blue;
+  background-color: #0000ff;
   color: white;
 }
 

@@ -17,6 +17,7 @@ const Navbar = () => {
             </ul>
 
             <ul className="user">
+                <li key="profile"><Link to="/profile">Profile</Link></li>
                 <li key="login"><Link to="/login">Login</Link></li>
                 <li key="sign-up"><Link to="/sign-up">Sign Up</Link></li>
             </ul>

@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar.jsx";
 import Login from "./components/Login.jsx";
 import SignUp from "./components/SignUp.jsx";
 import Calendar from "./components/Calendar.jsx";
+import ProfilePage from "./components/ProfilePage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: [<Navbar />, <Login />]
+  },
+  {
+    path: "/profile",
+    element: [<Navbar />, <ProfilePage />]
   }
 ]);
 
