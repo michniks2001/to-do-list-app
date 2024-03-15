@@ -14,6 +14,9 @@ const Navbar = () => {
                     Task View
                 </Link>
                 </li>
+                <li key="create-task"><Link to="/create-task">
+                    Create Task
+                </Link></li>
             </ul>
 
             <ul className="user">

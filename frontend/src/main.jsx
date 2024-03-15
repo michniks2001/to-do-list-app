@@ -11,6 +11,7 @@ import Login from "./components/Login.jsx";
 import SignUp from "./components/SignUp.jsx";
 import Calendar from "./components/Calendar.jsx";
 import ProfilePage from "./components/ProfilePage.jsx";
+import CreateTask from "./components/CreateTask.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
     element: [<Navbar />, <TaskView />],
   },
   {
+    path: "/create-task",
+    element: [<Navbar />, <CreateTask />]
+  },
+  {
     path: "/sign-up",
     element: [<Navbar />, <SignUp />]
   },
@@ -36,7 +41,7 @@ const router = createBrowserRouter([
   {
     path: "/profile",
     element: [<Navbar />, <ProfilePage />]
-  }
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

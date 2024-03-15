@@ -5,28 +5,14 @@ const ProfilePage = () => {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        const fetchUserData = async () => {
-            const token = Cookies.get('token');
-            if (token) {
-                const response = await fetch(`http://localhost:8000/users/profile/${user.id}`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-                const data = await response.json();
-                setUser(data);
-            }
-        };
-        fetchUserData();
+        const currentUser = Cookies.get('user_id');
+
+        fetch(`http://localhost:8000/users/profile/${currentUser}/`)
+            .then((response) => response.json())
+            .then((data) => setUser(data));
     }, []);
 
-    const sendToSignUp = () => {
-        window.location.href = '/sign-up';
-    };
-
-    const sendToLogIn = () => {
-        window.location.href = '/login';
-    };
+    console.log(user);
 
     return (
         <div>
@@ -36,12 +22,7 @@ const ProfilePage = () => {
                     <h3>Email: {user.email}</h3>
                 </div>
             ) : (
-                <div>
-                    <h2>You are not logged in!</h2>
-                    <h3>Sign up or log in to view your profile:</h3>
-                    <button onClick={sendToSignUp}>Sign Up</button>
-                    <button onClick={sendToLogIn}>Log In</button>
-                </div>
+                <h2>Loading...</h2>
             )}
         </div>
     );

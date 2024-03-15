@@ -1,59 +1,85 @@
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    background: #ddd;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background-color: #f8f9fa;
-    padding: 10px 20px;
-    z-index: 1000; /* Ensure the navbar is above other content */
+    border-radius: 10px;
+    margin: 10px 10px;
+    padding: none;
 }
 
-.main {
+.navbar .main {
     display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
 }
 
-.main li {
-    margin-right: 20px;
+.navbar .main li {
+    list-style: none;
+    margin: 0 10px;
 }
 
-.main li:last-child {
-    margin-right: 0;
-}
-
-.main li a {
+.navbar .main li a {
     text-decoration: none;
     color: black;
     font-weight: bold;
+    position: relative;
 }
 
-.user {
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.navbar .main li a:hover {
+    color: #007bff; /* Change color on hover */
 }
 
-.user li {
-    margin-right: 10px;
+.navbar .main li a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; /* Position the line underneath */
+    left: 0;
+    width: 100%;
+    height: 2px; /* Height of the line */
+    background-color: #007bff; /* Color of the line */
+    transform: scaleX(0); /* Initially set the line width to 0 */
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
 }
 
-.user li:last-child {
-    margin-right: 0;
+.navbar .main li a:hover::after {
+    transform: scaleX(1); /* Expand the line to full width on hover */
 }
-
-.user li a {
+.navbar .user li a {
     text-decoration: none;
     color: black;
     font-weight: bold;
+    position: relative;
 }
 
-/* Add padding to the body to offset the fixed navbar */
-body {
-    padding-top: 50px; /* Adjust as needed */
+.navbar .user {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 20px;
+}
+
+.navbar .user li {
+    list-style: none;
+    margin: 0 10px;
+}
+
+.navbar .user li a:hover {
+    color: #007bff; /* Change color on hover */
+}
+
+.navbar .user li a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; /* Position the line underneath */
+    left: 0;
+    width: 100%;
+    height: 2px; /* Height of the line */
+    background-color: #007bff; /* Color of the line */
+    transform: scaleX(0); /* Initially set the line width to 0 */
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
+}
+
+.navbar .user li a:hover::after {
+    transform: scaleX(1); /* Expand the line to full width on hover */
 }

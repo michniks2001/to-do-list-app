@@ -1,0 +1,74 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container .main-form h2 {
+    display: flex;
+    justify-self: center;
+    align-self: center;    
+}
+
+.form-container .main-form {
+    display: flex;
+    align-items:center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ddd;
+
+}
+
+.form-container .main-form p {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.form-container .main-form .text-enter {
+    font: inherit;
+    font-size: 12pt;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.form-container .main-form .submit-button {
+    font: inherit;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+    width: 100px;
+    align-self: center;
+}
+
+.form-container .main-form .submit-button:hover {
+    cursor: pointer;
+    background: #0056b3;
+}
+
+.form-container .main-form a {
+    text-decoration: none;
+    background: #007bff;
+    color: white;
+    font-size: 12pt;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    align-self: center;
+}
+
+.form-container .main-form a:hover {
+    cursor: pointer;
+    background: #0056b3;
+}

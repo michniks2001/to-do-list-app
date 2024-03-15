@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './styles/CreateTask.css'
+//import './styles/CreateTask.css'
 
 const CreateTask = () => {
     const [taskName, setTaskName] = useState('');
@@ -35,11 +35,13 @@ const CreateTask = () => {
     };
 
     return (
-        <div>
+        <div className="form-container">
+            <form className="main-form" onSubmit={handleSubmit}>
             <h2>Create Task</h2>
-            <form onSubmit={handleSubmit}>
-                <label>Task:
+                <label>
+                    <p>Task Name</p>
                     <input
+                        className="text-enter"
                         type="text"
                         value={taskName}
                         onChange={(e) => setTaskName(e.target.value)}
@@ -47,8 +49,9 @@ const CreateTask = () => {
                     />
                 </label>
                 <label>
-                    Start Date:
+                    <p>Start Date</p>
                     <input
+                        className="text-enter"
                         type="datetime-local"
                         value={startDate}
                         onChange={(e) => setStartDate(e.target.value)}
@@ -56,15 +59,16 @@ const CreateTask = () => {
                     />
                 </label>
                 <label>
-                    Deadline:
+                    <p>Deadline</p>
                     <input
+                        className="text-enter"
                         type="datetime-local"
                         value={deadline}
                         onChange={(e) => setDeadline(e.target.value)}
                         required
                     />
                 </label>
-                <button type="submit">Create Task</button>
+                <button className="submit-button" type="submit">Create Task</button>
             </form>
         </div>
     );

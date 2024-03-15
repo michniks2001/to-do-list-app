@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import "./styles/Calendar.css";
+//import "./styles/Calendar.css";
 
 const Calendar = () => {
   const [tasks, setTasks] = useState([]);

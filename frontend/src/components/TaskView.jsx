@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './styles/TaskView.css';
+//import './styles/TaskView.css';
 
 const TaskView = () => {
     const [events, setEvents] = useState([]);

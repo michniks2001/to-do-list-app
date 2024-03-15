@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import './styles/Login.css';
+import {jwtDecode} from 'jwt-decode';
+import './styles/Forms.css';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -25,24 +27,25 @@ function Login() {
         });
 
         const data = await response.json();
-        localStorage.setItem('token', data.access);
-        Cookies.set('token', data.access, { expires: 7 });
-        console.log(`Token: ${data.access}`);
+        Cookies.set('user_id', jwtDecode(data.access).user_id);
+        console.log(Cookies.get('user_id'));
     };
 
     return (
         <div className='form-container'>
+            <form className='main-form' onSubmit={handleSubmit}>
             <h2>Login</h2>
-            <form className='login-form' onSubmit={handleSubmit}>
                 <label>
-                    Email:
+                    <p>Email</p>
                     <input className="text-enter" type="email" value={email} onChange={handleEmailChange} />
                 </label>
                 <label>
-                    Password:
+                <p>Password</p>
                     <input className="text-enter" type="password" value={password} onChange={handlePasswordChange} />
                 </label>
-                <input className="submit-button" type="submit" value="Submit" />
+                <button className="submit-button" type="submit">Login</button>
+                <Link to="/sign-up">Don't have an account? Sign Up!</Link>
+
             </form>
         </div>
     );

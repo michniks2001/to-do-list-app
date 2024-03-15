@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './styles/Login.css';
+import { Link } from 'react-router-dom';
+import './styles/Forms.css';
 
 const SignUp = () => {
     const [email, setEmail] = useState("");
@@ -28,9 +29,10 @@ const SignUp = () => {
 
     return (
         <div className="form-container">
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form className="main-form" onSubmit={handleSubmit}>
             <h2>Sign Up</h2>
-            <label>Email:
+            <label>
+                <p>Email</p>
             <input
                 className="text-enter"
                 type="text"
@@ -38,7 +40,8 @@ const SignUp = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 />
             </label>
-            <label>Password:
+            <label>
+                <p>Password</p>
             <input
                 className="text-enter"
                 type="password"
@@ -46,7 +49,8 @@ const SignUp = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 />
             </label>
-            <label>First Name:
+            <label>
+                <p>First Name</p>
             <input
                 className="text-enter"
                 type="text"
@@ -54,7 +58,8 @@ const SignUp = () => {
                 onChange={(e) => setFirstName(e.target.value)}
                 />
             </label>
-            <label>Last Name:
+            <label>
+                <p>Last Name</p>
             <input
                 className="text-enter"
                 type="text"
@@ -63,6 +68,7 @@ const SignUp = () => {
                 />
             </label>
             <button className="submit-button" type="submit">Sign Up!</button>
+            <Link to="/login">Already have an account? Log in here</Link>
         </form>
         </div>
 
