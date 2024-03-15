@@ -12,14 +12,17 @@ const ProfilePage = () => {
             .then((data) => setUser(data));
     }, []);
 
-    console.log(user);
-
+    function handleLogout() {
+        Cookies.remove('user_id');
+        window.location.reload();
+    }
     return (
         <div>
             {user ? (
                 <div>
                     <h2>Welcome, {user.first_name}</h2>
                     <h3>Email: {user.email}</h3>
+                    <button onClick={handleLogout}>Log Out</button>
                 </div>
             ) : (
                 <h2>Loading...</h2>

@@ -2,9 +2,10 @@ from django.contrib.auth.base_user import BaseUserManager
 from django.utils.translation import gettext_lazy as _
 
 class StandardUserManager(BaseUserManager):
-    """
-    Custom user model manager where email is the unique identifiers
-    for authentication instead of usernames.
+    """Custom User Manager for the updated user model.
+
+    Args:
+        BaseUserManager : Inherits from this class to modify user creation and superuser creation.
     """
     def create_user(self, email: str, password: str, **extra_fields):
         """

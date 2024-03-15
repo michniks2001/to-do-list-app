@@ -18,5 +18,10 @@ class StandardUser(AbstractUser):
     
     objects = StandardUserManager()
     
-    def __str__(self):
+    def __str__(self) -> str:
+        """__str__ method for the StandardUser model
+
+        Returns:
+            str: returns the email when viewing user information
+        """
         return self.email
