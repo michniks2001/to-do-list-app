@@ -13,7 +13,7 @@ const ProfilePage = () => {
             .then((data) => setUser(data));
     }, []);
 
-    function handleLogout() {
+    const handleLogout = () => {
         Cookies.remove('user_id');
         window.location.reload();
     }

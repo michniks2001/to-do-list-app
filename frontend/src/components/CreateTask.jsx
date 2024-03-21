@@ -6,6 +6,11 @@ const CreateTask = () => {
     const [taskName, setTaskName] = useState('');
     const [startDate, setStartDate] = useState('');
     const [deadline, setDeadline] = useState('');
+    const [user, setUser] = useState(null);
+
+    if (Cookies.get('user_id') !== null) {
+        setUser(Cookies.get('user_id'))
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,7 +24,7 @@ const CreateTask = () => {
                 task_name: taskName,
                 start_date: startDate,
                 deadline: deadline,
-                author: Cookies.get('user_id'),
+                author: user
             }),
         })
         .then(response => response.json())
