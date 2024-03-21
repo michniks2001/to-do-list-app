@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import {jwtDecode} from 'jwt-decode';
 import './styles/Forms.css';
 
-function Login() {
+const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -29,6 +29,7 @@ function Login() {
         const data = await response.json();
         Cookies.set('user_id', jwtDecode(data.access).user_id);
         console.log(Cookies.get('user_id'));
+        window.location.href = "/calendar";
     };
 
     return (
@@ -49,6 +50,6 @@ function Login() {
             </form>
         </div>
     );
-}
+};
 
 export default Login;

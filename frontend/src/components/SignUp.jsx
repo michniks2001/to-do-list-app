@@ -22,6 +22,7 @@ const SignUp = () => {
                 throw new Error("Sign up failed");
             }
             const data = await response.json();
+            window.location.href = "/login"
         } catch(error) {
             console.error(error.message);
         }

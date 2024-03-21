@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
+import './styles/ProfilePage.css';
 
 const ProfilePage = () => {
     const [user, setUser] = useState(null);
@@ -19,13 +20,16 @@ const ProfilePage = () => {
     return (
         <div>
             {user ? (
-                <div>
-                    <h2>Welcome, {user.first_name}</h2>
-                    <h3>Email: {user.email}</h3>
-                    <button onClick={handleLogout}>Log Out</button>
+                <div className="profile-container">
+                    <h2 className="header">Welcome, {user.first_name} {user.last_name}</h2>
+                    <button className="edit-button" onClick={() => window.location.href="/update-name"}>Edit</button>
+                    <h2 className="header">Email: {user.email} 
+                    </h2>
+                    <button className="edit-button">Edit</button>
+                    <button className="logout-button" onClick={handleLogout}>Log Out</button>
                 </div>
             ) : (
-                <h2>Loading...</h2>
+                <h2>Log In to view Profile</h2>
             )}
         </div>
     );

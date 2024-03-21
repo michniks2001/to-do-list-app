@@ -19,8 +19,16 @@ class ListTasks(generics.ListAPIView):
     Args:
         generics (ListAPIView): Inherits from this generic view to allow for viewing of tasks
     """
-    queryset = Task.objects.all()
     serializer_class = TaskSerializer
+    
+    def get_queryset(self):
+        user_id = self.request.COOKIES.get('user_id')
+        return Task.objects.filter(author=user_id)
+    
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context['cookies'] = self.request.COOKIES
+        return context
 
 
 class GetTaskInformation(generics.RetrieveAPIView):

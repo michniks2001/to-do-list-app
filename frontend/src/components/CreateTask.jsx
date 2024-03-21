@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import Cookies from 'js-cookie';
+import { useState } from 'react';
 //import './styles/CreateTask.css'
 
 const CreateTask = () => {
@@ -18,21 +19,28 @@ const CreateTask = () => {
                 task_name: taskName,
                 start_date: startDate,
                 deadline: deadline,
+                author: Cookies.get('user_id'),
             }),
         })
         .then(response => response.json())
         .then(data => {
             // Assuming data contains the newly created task object
-            onCreate(data);
+            console.log('Success:', data);
             setTaskName('');
             setStartDate('');
             setDeadline('');
-            window.location.reload();
+            //window.location.href = "/calendar";
         })
         .catch(error => {
             console.error('Error:', error);
         });
     };
+
+    if (Cookies.get('user_id') === undefined) {
+        return (
+            <h2>Log In to create a task</h2>
+        )
+    }
 
     return (
         <div className="form-container">

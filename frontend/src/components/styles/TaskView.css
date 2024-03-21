@@ -1,0 +1,38 @@
+.calendar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.calendar h1 {
+    margin: 10px;
+    font-size: 2em;
+    font-weight: bold;
+    align-self: center;
+}
+
+.calendar .event {
+    background: lightgray;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 10px;
+    border: black solid 1px;
+}
+
+.calendar .event .completed {
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font: inherit;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+}

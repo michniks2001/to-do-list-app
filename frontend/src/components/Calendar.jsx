@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
+import Cookies from "js-cookie";
 //import "./styles/Calendar.css";
 
 const Calendar = () => {
@@ -30,6 +31,13 @@ const Calendar = () => {
     };
   }
   const events = tasks.map(renderTask);
+
+  let user = Cookies.get("user_id");
+  if (user === undefined) {
+    return (
+      <h2>Log In to view Calendar</h2>
+    )
+  }
 
   return (
     <FullCalendar

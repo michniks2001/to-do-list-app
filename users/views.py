@@ -12,7 +12,7 @@ class UserCreateView(generics.CreateAPIView):
     serializer_class = StandardUserCreationSerializer
     permission_classes = [AllowAny]
 
-class UserProfileView(generics.RetrieveAPIView):
+class UserProfileView(generics.RetrieveUpdateAPIView):
     permsision_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
     queryset = User.objects.all()

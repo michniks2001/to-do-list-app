@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-//import './styles/TaskView.css';
+import { useEffect, useState } from 'react';
+import Cookies from 'js-cookie'
+import './styles/TaskView.css';
 
 const TaskView = () => {
     const [events, setEvents] = useState([]);
@@ -47,16 +48,26 @@ const TaskView = () => {
         });
     };
 
+    if (Cookies.get('user_id') === undefined) {
+        return (
+            <h2>Log In to view Tasks</h2>
+        )
+    }
+
     return (
         <div className="calendar">
+            <h1>All Task Details</h1>
             {events.map(event => (
                 <div key={event.id} className="event">
-                    <div className="date">{formatDateTime(event.start_date)}</div>
                     <div className="details">
                         <h3>{event.task_name}</h3>
-                        <p>{formatDateTime(event.deadline)}</p>
-                        {!event.completed && (
-                            <button onClick={() => handleComplete(event.id)}>Mark as Complete</button>
+                        <p className="start-date">Start: {formatDateTime(event.start_date)}</p>
+                        <p className="deadline">End: {formatDateTime(event.deadline)}</p>
+                        {!event.completed ? (
+                            <button className="completed" onClick={() => handleComplete(event.id)}>Mark as Completed</button>
+                        ) : (
+                            <button className="completed" style={{ cursor: "default"}}>Completed</button>
+                        
                         )}
                     </div>
                 </div>
