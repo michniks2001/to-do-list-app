@@ -1,68 +1,59 @@
 import Cookies from 'js-cookie';
-import { useState } from 'react';
-//import './styles/CreateTask.css'
+import { useState, useEffect } from 'react';
+import './styles/Forms.css'
 
 const CreateTask = () => {
-    const [taskName, setTaskName] = useState('');
+    const [title, setTitle] = useState('');
     const [startDate, setStartDate] = useState('');
     const [deadline, setDeadline] = useState('');
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState('');
 
-    if (Cookies.get('user_id') !== null) {
-        setUser(Cookies.get('user_id'))
-    }
+    useEffect(() => {
+        setUser(Cookies.get('user_id'));
+        console.log(user);
+    })
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        fetch('http://localhost:8000/tasks/create/', {
+
+        const response = await fetch("http://localhost:8000/tasks/create/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                task_name: taskName,
+                task_name: title,
                 start_date: startDate,
                 deadline: deadline,
-                author: user
+                author: parseInt(user)
             }),
         })
         .then(response => response.json())
         .then(data => {
-            // Assuming data contains the newly created task object
             console.log('Success:', data);
-            setTaskName('');
-            setStartDate('');
-            setDeadline('');
-            //window.location.href = "/calendar";
+            window.location.href = '/calendar';
+            window.alert('Task Created Successfully!')
         })
-        .catch(error => {
+        .catch((error) => {
+            window.alert('Error: Task Not Created!')
             console.error('Error:', error);
         });
     };
 
-    if (Cookies.get('user_id') === undefined) {
+    if (user) {
         return (
-            <h2>Log In to create a task</h2>
-        )
-    }
-
-    return (
-        <div className="form-container">
-            <form className="main-form" onSubmit={handleSubmit}>
-            <h2>Create Task</h2>
-                <label>
-                    <p>Task Name</p>
+            <div className="form-container">
+                <form className="main-form" onSubmit={handleSubmit}>
+                    <h2>Create Task</h2>
+                    <label>Title:</label>
                     <input
                         className="text-enter"
                         type="text"
-                        value={taskName}
-                        onChange={(e) => setTaskName(e.target.value)}
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
                         required
                     />
-                </label>
-                <label>
-                    <p>Start Date</p>
+                    <label>Start Date:</label>
                     <input
                         className="text-enter"
                         type="datetime-local"
@@ -70,9 +61,7 @@ const CreateTask = () => {
                         onChange={(e) => setStartDate(e.target.value)}
                         required
                     />
-                </label>
-                <label>
-                    <p>Deadline</p>
+                    <label>Deadline:</label>
                     <input
                         className="text-enter"
                         type="datetime-local"
@@ -80,11 +69,17 @@ const CreateTask = () => {
                         onChange={(e) => setDeadline(e.target.value)}
                         required
                     />
-                </label>
-                <button className="submit-button" type="submit">Create Task</button>
-            </form>
-        </div>
-    );
+                    <button className="submit-button" type="submit">Create Task</button>
+                </form>
+            </div>
+        );
+    } else {
+        return (
+            <div className="form-container">
+                <h2>Please Login to Create Task</h2>
+            </div>
+        )
+    }
 };
 
 export default CreateTask;

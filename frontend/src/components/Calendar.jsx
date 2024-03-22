@@ -6,15 +6,16 @@ import Cookies from "js-cookie";
 
 const Calendar = () => {
   const [tasks, setTasks] = useState([]);
+  const user = parseInt(Cookies.get("user_id"));
 
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await fetch("http://localhost:8000/tasks/list/");
+        const response = await fetch(`http://localhost:8000/tasks/list/${user}/`);
         const data = await response.json();
         setTasks(data);
       } catch (error) {
-        console.error(error.message);
+        console.log("error", error);
       }
     };
 
@@ -32,7 +33,6 @@ const Calendar = () => {
   }
   const events = tasks.map(renderTask);
 
-  let user = Cookies.get("user_id");
   if (user === undefined) {
     return (
       <h2>Log In to view Calendar</h2>

@@ -1,4 +1,5 @@
 from rest_framework import generics
+from rest_framework.response import Response
 from .serializers import *
 from .models import *
 
@@ -9,7 +10,6 @@ class CreateTask(generics.CreateAPIView):
     Args:
         generics (CreateAPIView): Inherits from this generic view to allow for task creation
     """ 
-    queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
 
@@ -20,16 +20,27 @@ class ListTasks(generics.ListAPIView):
         generics (ListAPIView): Inherits from this generic view to allow for viewing of tasks
     """
     serializer_class = TaskSerializer
+    queryset = Task.objects.all()
     
-    def get_queryset(self):
-        user_id = self.request.COOKIES.get('user_id')
-        return Task.objects.filter(author=user_id)
-    
-    def get_serializer_context(self):
-        context = super().get_serializer_context()
-        context['cookies'] = self.request.COOKIES
-        return context
 
+class ListTasksByAuthor(generics.ListAPIView):
+    """Task List by Author View
+
+    Args:
+        generics (ListAPIView): Inherits from this generic view to allow for viewing of tasks by author
+    """
+    serializer_class = TaskSerializer
+    queryset = Task.objects.all()
+
+    def get_queryset(self):
+        """Get Queryset Method
+
+        Returns:
+            Queryset: Returns a queryset of tasks by author
+        """
+        author = self.kwargs['author']
+        return Task.objects.filter(author_id=author)
+    
 
 class GetTaskInformation(generics.RetrieveAPIView):
     """Get Task View
@@ -37,9 +48,8 @@ class GetTaskInformation(generics.RetrieveAPIView):
     Args:
         generics (RetrieveAPIView): Inherits from this generic view to get specific task information
     """
-    queryset = Task.objects.all()
     serializer_class = TaskSerializer
-
+    queryset = Task.objects.all()
 
 class DeleteTask(generics.DestroyAPIView):
     """Delete Task View
@@ -49,6 +59,8 @@ class DeleteTask(generics.DestroyAPIView):
     """
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
+    lookup_url_kwarg = 'pk'
+    
     
 
 class MarkAsCompleted(generics.UpdateAPIView):

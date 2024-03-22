@@ -4,9 +4,10 @@ import './styles/TaskView.css';
 
 const TaskView = () => {
     const [events, setEvents] = useState([]);
+    const user = parseInt(Cookies.get('user_id'));
 
     useEffect(() => {
-        fetch('http://localhost:8000/tasks/list/')
+        fetch(`http://localhost:8000/tasks/list/${user}/`)
             .then(response => response.json())
             .then(data => setEvents(data));
     }, []);
@@ -48,6 +49,27 @@ const TaskView = () => {
         });
     };
 
+    const handleDelete = (id) => {
+        fetch(`http://localhost:8000/tasks/${id}/delete/`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ completed: true }),
+        })
+        .then(response => {
+            if (response.ok) {
+                const updatedEvents = events.map(event => {
+                    if (event.id === id) {
+                        return { ...event, completed: true };
+                    }
+                    return event;
+                });
+                setEvents(updatedEvents);
+            }
+        });
+    };
+
     if (Cookies.get('user_id') === undefined) {
         return (
             <h2>Log In to view Tasks</h2>
@@ -69,6 +91,7 @@ const TaskView = () => {
                             <button className="completed" style={{ cursor: "default"}}>Completed</button>
                         
                         )}
+                        <button className="completed" onClick={() => handleDelete(event.id)}>Delete</button>
                     </div>
                 </div>
             ))}
