@@ -1,5 +1,14 @@
+"""Urls local to the to_do_list_app app."""
+
 from django.urls import path
-from .views import CreateTask, ListTasks, GetTaskInformation, DeleteTask, MarkAsCompleted, ListTasksByAuthor
+from .views import (
+    CreateTask, 
+    ListTasks, 
+    GetTaskInformation, 
+    DeleteTask, 
+    MarkAsCompleted, 
+    ListTasksByAuthor
+)
 
 urlpatterns = [
     path('tasks/create/', CreateTask.as_view(), name='create-task'),
