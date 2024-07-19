@@ -39,13 +39,20 @@ const Calendar = () => {
     )
   }
 
-  return (
+  if (user) { return (
     <FullCalendar
-      plugins={[dayGridPlugin]}
-      initialView="dayGridMonth"
-      events={events}
-    />
-  );
-};
+        plugins={[dayGridPlugin]}
+        initialView="dayGridMonth"
+        events={events}
+        />
+      );
+    } else {
+      return (
+        <div className="form-container">
+          <h2>Log In to view Calendar</h2>
+        </div> 
+      );
+    }
+  };
 
 export default Calendar;

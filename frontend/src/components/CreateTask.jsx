@@ -76,7 +76,7 @@ const CreateTask = () => {
     } else {
         return (
             <div className="form-container">
-                <h2>Please Login to Create Task</h2>
+                <h2>Please Log In to Create Task</h2>
             </div>
         )
     }

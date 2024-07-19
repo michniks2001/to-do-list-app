@@ -72,7 +72,9 @@ const TaskView = () => {
 
     if (Cookies.get('user_id') === undefined) {
         return (
-            <h2>Log In to view Tasks</h2>
+            <div className="form-container">
+                <h2>Log In to view Tasks</h2>
+            </div>
         )
     }
 
